@@ -1,0 +1,126 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Alexandre MENU - @alexjbbx_", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+	Name = "Bem vindo ao Mod Menu Premium",
+	Content = "Esta pronto para uma nova dimensão??",
+	Image = "rbxassetid://4483345998",
+	Time = 10
+})
+
+local PlayerOP = Window:MakeTab({
+	Name = "Inicio",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local PlayerOPSection = PlayerOP:AddSection({
+	Name = "Inicio"
+})
+PlayerOP:AddLabel("Criado por Alexandre Cabrita - Programador")
+PlayerOP:AddLabel("Versao Premium - Mod Menu")
+PlayerOP:AddLabel("Uma experiencia inovadora")
+PlayerOP:AddLabel("Um HUD melhor desenvolvido")
+PlayerOP:AddLabel("Mais de 125 opcoes")
+PlayerOP:AddLabel("Feito por um programador professional")
+
+
+local ExperienciaTab = Window:MakeTab({
+	Name = "Experiencia",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local ExperienciaTabSection = ExperienciaTab:AddSection({
+	Name = "Opcoes da Experiencia"
+})
+ExperienciaTab:AddButton({
+	Name = "Kill Roblox",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+ExperienciaTab:AddSlider({
+	Name = "Velocidade",
+	Min = 16,
+	Max = 1000,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Velocidade",
+	Callback = function(v)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+	end    
+})
+ExperienciaTab:AddSlider({
+	Name = "Altitude do Salto",
+	Min = 50,
+	Max = 1000,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Altitude",
+	Callback = function(v)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+	end    
+})
+local PlayerOptionsTab = Window:MakeTab({
+	Name = "Jogadores",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local PlayerOptionsTabSection = PlayerOptionsTab:AddSection({
+	Name = "Opcoes dos Jogadores"
+})
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name)
+end
+
+PlayerOptionsTab:AddDropdown({
+	Name = "Selecione o player",
+	Default = "",
+	Options = Plr,
+	Callback = function(t)
+		PlayerTP = t
+	end    
+})
+PlayerOptionsTab:AddButton({
+	Name = "Teleportar para o Player",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].character.HumanoidRootPart.CFrame
+  	end    
+})
+local PlayersONTab = Window:MakeTab({
+	Name = "Players ON",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local PlayersONTabSection = PlayersONTab:AddSection({
+	Name = "Players Online"
+})
+PlayersONTab:AddLabel("Aqui voce pode ver os player online")
+PlayersONTab:AddDropdown({
+	Name = "Players Online",
+	Default = "",
+	Options = Plr,
+	Callback = function(t)
+		
+	end    
+})
+
+
+local DefinicoesTab = Window:MakeTab({
+	Name = "Definicoes",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local DefinicoesTabSection = DefinicoesTab:AddSection({
+	Name = "Definicoes"
+})
+DefinicoesTab:AddColorpicker({
+	Name = "Escolha uma cor",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		ColorPicker:Set(Color3.fromRGB(255,255,255))
+	end	  
+})
